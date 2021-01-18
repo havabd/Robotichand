@@ -197,6 +197,16 @@ while camera.isOpened():
                     elif cnt == 5:
                         ser.write(b'5')
                         #time.sleep(0.1)
+        if length == 0 :
+            elapsed_time = time.time()-start_time
+            print(elapsed_time)
+            if elapsed_time >= 20:
+             ser.write(b'5')
+             bgModel = None
+             triggerSwitch = False
+             isBgCaptured = 0
+             print ('RESET RESET')
+             start_time = time.time()
 
 
         cv2.imshow('output', roi)
